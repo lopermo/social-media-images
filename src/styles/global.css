@@ -1,0 +1,12 @@
+/* ./styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input, textarea, select {
+  @apply border border-gray-400 px-4 py-2 block rounded text-lg;
+}
+
+.button {
+  @apply border border-current bg-blue-500 text-white px-6 py-3 block rounded;
+}
