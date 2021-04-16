@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import Arrow from "../../public/curved-arrow.svg";
 
-const width = "400px";
+let width = "400px";
+if (typeof window !== "undefined") {
+  const { innerWidth: windowWidth, innerHeight: windowHeight } = window;
+  if (windowWidth < 600) {
+    width = `${window.outerWidth - 50}px`;
+  }
+}
 // Create a Title component that'll render an <h1> tag with some styles
 const Card = styled.section`
   width: ${width};
@@ -57,6 +62,13 @@ const LinkedinFooter = () => {
 }
 
 const card = (props) => {
+  useEffect(() => {
+    const { innerWidth: windowWidth, innerHeight: windowHeight } = window;
+    console.log(window);
+    if (windowWidth < 600) {
+      width = `${window.outerWidth}px`;
+    }
+  });
   const bgColor = `rgba(${props.bgColor.r}, ${props.bgColor.g}, ${props.bgColor.b}, ${props.bgColor.a})`;
   const textColor = `rgba(${props.textColor.r}, ${props.textColor.g}, ${props.textColor.b}, ${props.textColor.a})`;
 

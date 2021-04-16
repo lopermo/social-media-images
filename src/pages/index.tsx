@@ -110,12 +110,12 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col justify-center w-screen min-h-screen bg-ghost">
+    <div className="flex flex-col justify-center w-screen max-w-screen min-h-screen bg-ghost py-20">
       <div className="max-w-screen-sm mx-auto mb-20 text-5xl font-black leading-tight text-center text-indigo-900 font-poppins">
         Create your OpenGraph image in seconds
       </div>
-      <div className="flex justify-between max-w-screen-lg mx-auto lg:space-x-20">
-        <div className="flex-initial pb-20">
+      <div className="flex flex-wrap lg:flex-nowrap justify-between max-w-full lg:max-w-screen-lg mx-auto lg:space-x-20">
+        <div className="flex-initial order-2 lg:order-1">
           <div data-id="Facebook" className="mb-10">
             <div className="text-lg mb-2 font-poppins text-gray-600 px-4">Facebook post</div>
             <div className="bg-white p-6 rounded-xl border">
@@ -146,9 +146,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 order-1 lg:order-2">
           <div className="w-full">
-            <div className="max-w-screen-md px-10 py-8 mx-auto bg-white border rounded-xl">
+            <div className="lg:max-w-screen-md px-10 py-8 mx-auto bg-white border rounded-xl max-w-screen">
               <div className="flex flex-wrap mb-4 lg:space-x-8 lg:flex-nowrap">
                 <div className="flex-initial">
                   <Label>Background color</Label>
@@ -191,8 +191,8 @@ export default function Home() {
                   ) : null}
                 </div>
               </div>
-              <div className="flex flex-wrap mb-4 lg:space-x-8 lg:flex-nowrap">
-                <div className="flex-initial">
+              <div className="flex flex-wrap lg:mb-4 lg:space-x-8 lg:flex-nowrap">
+                <div className="mb-4 lg:mb-0 flex-1 w-full lg:flex-initial">
                   <Label>Title style</Label>
                   <select
                     value={titleWeight}
@@ -206,7 +206,7 @@ export default function Home() {
                     <option value="font-extralight">Extra light</option>
                   </select>
                 </div>
-                <div className="flex-initial">
+                <div className="mb-4 lg:mb-0 w-full lg:flex-initial">
                   <Label>Body style</Label>
                   <select
                     value={descWeight}
@@ -220,7 +220,7 @@ export default function Home() {
                     <option value="font-extralight">Extra light</option>
                   </select>
                 </div>
-                <div className="flex-initial">
+                <div className="mb-4 lg:mb-0 flex-1 w-full lg:flex-initial">
                   <Label>Text align</Label>
                   <select
                     value={textAlign}
