@@ -15,5 +15,5 @@ select {
 }
 
 .button {
-  @apply block px-6 py-3 text-white bg-blue-500 border border-current rounded;
+  @apply block px-6 py-3 text-white bg-indigo-800 border border-current rounded-lg;
 }

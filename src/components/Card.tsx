@@ -29,9 +29,45 @@ const Description = styled.section`
   color: #606770;
 `;
 
+const FacebookFooter = () => {
+  return (
+    <div
+      className="px-6 py-4 border-t border-gray-200"
+      style={{ backgroundColor: "#f0f2f5" }}
+    >
+      <Link className="mb-2 text-xs uppercase">myfantasticwebsite.com</Link>
+      <Title className="font-medium">My fantastic website</Title>
+      <Description className="text-sm text-gray-600">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sit
+        fugiat dicta nisi facere...
+      </Description>
+    </div>
+  )
+}
+
+const LinkedinFooter = () => {
+  return (
+    <div
+      className="px-3 py-2 border-t border-gray-200"
+    >
+      <Title className="font-medium mb-1">My fantastic website</Title>
+      <Link className="text-xs">myfantasticwebsite.com</Link>
+    </div>
+  )
+}
+
 const card = (props) => {
   const bgColor = `rgba(${props.bgColor.r}, ${props.bgColor.g}, ${props.bgColor.b}, ${props.bgColor.a})`;
   const textColor = `rgba(${props.textColor.r}, ${props.textColor.g}, ${props.textColor.b}, ${props.textColor.a})`;
+
+  const cardType = (props.cardType ?? 'facebook').toLowerCase();
+  let footer;
+  if (cardType == "facebook") {
+    footer = <FacebookFooter />;
+  } else if (cardType == 'linkedin') {
+    footer = <LinkedinFooter />;
+  }
+
   return (
     <Card className="relative overflow-hidden border border-gray-300 max-w-max">
       <Header
@@ -50,17 +86,7 @@ const card = (props) => {
         </div>
         {/* <Arrow className="absolute z-10 w-24 h-24 transform rotate-90 bottom-8 right-20" /> */}
       </Header>
-      <div
-        className="px-6 py-4 border-t border-gray-200"
-        style={{ backgroundColor: "#f0f2f5" }}
-      >
-        <Link className="mb-2 text-xs uppercase">myfantasticwebsite.com</Link>
-        <Title className="font-medium">My fantastic website</Title>
-        <Description className="text-sm text-gray-600">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sit
-          fugiat dicta nisi facere...
-        </Description>
-      </div>
+      {footer}
     </Card>
   );
 };
