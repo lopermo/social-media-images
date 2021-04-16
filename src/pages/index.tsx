@@ -36,7 +36,7 @@ const Cover = styled.div`
 `;
 const Label = styled.label`
   margin-bottom: 0.5rem;
-  font-weight: 500;
+  font-weight: 400;
   display: block;
 `;
 
@@ -111,27 +111,47 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-center w-screen min-h-screen bg-ghost">
-      <div className="max-w-screen-sm mx-auto mb-20 text-5xl font-black leading-tight text-center text-blue-500 font-poppins">
+      <div className="max-w-screen-sm mx-auto mb-20 text-5xl font-black leading-tight text-center text-indigo-900 font-poppins">
         Create your OpenGraph image in seconds
       </div>
       <div className="flex justify-between max-w-screen-lg mx-auto lg:space-x-20">
-        <div className="flex-initial">
-          <Card
-            bgColor={bgColor}
-            textColor={textColor}
-            title={title}
-            titleWeight={titleWeight}
-            descWeight={descWeight}
-            textAlign={textAlign}
-            description={description}
-          />
+        <div className="flex-initial pb-20">
+          <div data-id="Facebook" className="mb-10">
+            <div className="text-lg mb-2 font-poppins text-gray-600 px-4">Facebook post</div>
+            <div className="bg-white p-6 rounded-xl border">
+              <Card
+                bgColor={bgColor}
+                textColor={textColor}
+                title={title}
+                titleWeight={titleWeight}
+                descWeight={descWeight}
+                textAlign={textAlign}
+                description={description}
+              />
+            </div>
+          </div>
+          <div data-id="Linkedin">
+            <div className="text-lg mb-2 font-poppins text-gray-600 px-4">Linkedin post</div>
+            <div className="bg-white p-6 rounded-xl border">
+              <Card
+                cardType="linkedin"
+                bgColor={bgColor}
+                textColor={textColor}
+                title={title}
+                titleWeight={titleWeight}
+                descWeight={descWeight}
+                textAlign={textAlign}
+                description={description}
+              />
+            </div>
+          </div>
         </div>
         <div className="flex-1">
           <div className="w-full">
-            <div className="max-w-screen-md px-10 py-8 mx-auto bg-white border border-b rounded-xl">
+            <div className="max-w-screen-md px-10 py-8 mx-auto bg-white border rounded-xl">
               <div className="flex flex-wrap mb-4 lg:space-x-8 lg:flex-nowrap">
-                <div className="flex-1">
-                  <Label>Background</Label>
+                <div className="flex-initial">
+                  <Label>Background color</Label>
                   <Swatch onClick={clickBgPicker}>
                     <Color
                       style={{
@@ -150,8 +170,8 @@ export default function Home() {
                     </Popover>
                   ) : null}
                 </div>
-                <div className="flex-1">
-                  <Label>Text</Label>
+                <div className="flex-initial">
+                  <Label>Text color</Label>
                   <Swatch onClick={clickTextPicker}>
                     <Color
                       style={{
@@ -170,30 +190,10 @@ export default function Home() {
                     </Popover>
                   ) : null}
                 </div>
-                <div className="flex-1">
-                  <Label>Text align</Label>
-                  <select
-                    value={textAlign}
-                    onChange={(event) => setTextAlign(event.target.value)}
-                  >
-                    <option value="text-left">Left</option>
-                    <option value="text-center">Center</option>
-                    <option value="text-right">Right</option>
-                  </select>
-                </div>
               </div>
               <div className="flex flex-wrap mb-4 lg:space-x-8 lg:flex-nowrap">
-                <div className="flex-1">
-                  <Label>Title</Label>
-                  <input
-                    className="w-full"
-                    type="text"
-                    value={title}
-                    onChange={(event) => setTitle(event.target.value)}
-                  />
-                </div>
-                <div>
-                  <Label>Style</Label>
+                <div className="flex-initial">
+                  <Label>Title style</Label>
                   <select
                     value={titleWeight}
                     onChange={(event) => setTitleWeight(event.target.value)}
@@ -206,18 +206,8 @@ export default function Home() {
                     <option value="font-extralight">Extra light</option>
                   </select>
                 </div>
-              </div>
-              <div className="flex flex-wrap mb-4 lg:space-x-8 lg:flex-nowrap">
-                <div className="flex-1">
-                  <Label>Body</Label>
-                  <textarea
-                    className="w-full"
-                    value={description}
-                    onChange={(event) => setDescription(event.target.value)}
-                  />
-                </div>
-                <div>
-                  <Label>Style</Label>
+                <div className="flex-initial">
+                  <Label>Body style</Label>
                   <select
                     value={descWeight}
                     onChange={(event) => setDescWeight(event.target.value)}
@@ -230,6 +220,34 @@ export default function Home() {
                     <option value="font-extralight">Extra light</option>
                   </select>
                 </div>
+                <div className="flex-initial">
+                  <Label>Text align</Label>
+                  <select
+                    value={textAlign}
+                    onChange={(event) => setTextAlign(event.target.value)}
+                  >
+                    <option value="text-left">Left</option>
+                    <option value="text-center">Center</option>
+                    <option value="text-right">Right</option>
+                  </select>
+                </div>
+              </div>
+              <div className="mb-4">
+                <Label>Title</Label>
+                <input
+                  className="w-full"
+                  type="text"
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
+                />
+              </div>
+              <div className="mb-4">
+                <Label>Body</Label>
+                <textarea
+                  className="w-full"
+                  value={description}
+                  onChange={(event) => setDescription(event.target.value)}
+                />
               </div>
               <button onClick={saveImage} className="mt-4 ml-auto button">
                 Save image
